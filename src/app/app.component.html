@@ -1,0 +1,26 @@
+tjhu6jteharthathahahh
+
+<app-mostrar-imagen [imagen]="imagen"></app-mostrar-imagen>
+<app-mostrar-imagen [imagen]="imagen2"></app-mostrar-imagen>
+<app-mostrar-imagen [imagen]="imagen3"></app-mostrar-imagen>
+
+
+<section>
+  <fieldset>
+    <label for="">Nombre de la imagen</label>
+    <input type="text" name="nombre" [value]="nuevoHistorial.nombre" (input)="cambiarNombre($event)">
+  </fieldset>
+
+  <fieldset>
+    <label for="">Detalle de la imagen</label>
+    <textarea name="detalle" [value]="nuevoHistorial.detalle" (input)="cambiarDetalle($event)" cols="30" rows="10"></textarea>
+  </fieldset>
+
+  <fieldset>
+    <label for="">URL de la imagen</label>
+    <input type="text" name="imagen" [value]="nuevoHistorial.imagen" (input)="cambiarImagen($event)">
+  </fieldset>
+
+ {{nuevoHistorial.imagen}}
+
+</section>
