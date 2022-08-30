@@ -9,18 +9,49 @@ tjhu6jteharthathahahh
   <fieldset>
     <label for="">Nombre de la imagen</label>
     <input type="text" name="nombre" [value]="nuevoHistorial.nombre" (input)="cambiarNombre($event)">
+    {{nuevoHistorial.nombre}}
   </fieldset>
 
   <fieldset>
     <label for="">Detalle de la imagen</label>
     <textarea name="detalle" [value]="nuevoHistorial.detalle" (input)="cambiarDetalle($event)" cols="30" rows="10"></textarea>
+    {{nuevoHistorial.detalle}}
   </fieldset>
 
   <fieldset>
     <label for="">URL de la imagen</label>
-    <input type="text" name="imagen" [value]="nuevoHistorial.imagen" (input)="cambiarImagen($event)">
+    <input type="url" name="imagen" [value]="nuevoHistorial.imagen" (input)="cambiarImagen($event)">
+    <app-mostrar-imagen [imagen]="nuevoHistorial.imagen"></app-mostrar-imagen>
   </fieldset>
 
- {{nuevoHistorial.imagen}}
+  <fieldset>
+    <button type="button" role="button" (click)="guardarHistorial()">Guardar</button>
+  </fieldset>
 
+  {{ elementosGuardados.length }}
+
+</section>
+
+<section>
+  <article *ngFor="let item of elementosGuardados" >
+    <app-mostrar-imagen [imagen]="item.imagen" ></app-mostrar-imagen>
+
+    <h2 *ngIf="item.nombre; then aquiIf; else aquiElse"></h2>
+    <ng-template #aquiIf>
+      <h2>{{ item.nombre }}</h2>
+    </ng-template>
+    <ng-template #aquiElse>
+      <h2>Sin nombre</h2>
+    </ng-template>
+
+
+    <p *ngIf="item.detalle; then aquiIfDetalle; else aquiElseDetalle"></p>
+    <ng-template #aquiIfDetalle>
+      <h2>{{item.detalle}}</h2>
+    </ng-template>
+    <ng-template #aquiElseDetalle>
+      <h2>Sin detalle</h2>
+    </ng-template>
+
+  </article>
 </section>
